@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Swatu 🌹</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* Card */
+.card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    padding: 35px 30px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    max-width: 360px;
+    z-index: 2;
+}
+
+.rose {
+    font-size: 55px;
+}
+
+h1 {
+    font-size: 26px;
+    margin: 12px 0;
+}
+
+.tap {
+    margin-top: 18px;
+    padding: 12px 18px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hidden Message */
+.message {
+    display: none;
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.from {
+    margin-top: 15px;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* Falling Roses */
+.falling {
+    position: absolute;
+    top: -50px;
+    font-size: 26px;
+    animation: fall linear infinite;
+    opacity: 0.85;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Playful Hearts */
+.heart {
+    position: absolute;
+    font-size: 18px;
+    animation: float 6s ease-in infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-120vh) scale(1.5); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="rose">🌹</div>
+    <h1>Happy Rose Day, Swatu</h1>
+
+    <div class="tap" onclick="reveal()">Tap to reveal something for you 💕</div>
+
+    <div class="message" id="msg">
+        Just like this rose,  
+        you quietly made your way into my heart…  
+        and now everything feels warmer, softer, happier.  
+        I wish mein tere pass hota iss waqt,
+I miss you more than you think. I love you  
+        and I’ll choose you every day ❤️
+        <div class="from">— Yours, Aadi 💗</div>
+    </div>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="dekha-hi-nahi.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function reveal() {
+    document.getElementById("msg").style.display = "block";
+    document.getElementById("bgMusic").play();
+}
+
+/* Falling Roses */
+const flowers = ["🌹","🌸","🌷"];
+for (let i = 0; i < 25; i++) {
+    let f = document.createElement("div");
+    f.className = "falling";
+    f.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
+    f.style.left = Math.random()*100 + "vw";
+    f.style.animationDuration = (5 + Math.random()*5) + "s";
+    document.body.appendChild(f);
+}
+
+/* Floating Hearts */
+for (let i = 0; i < 20; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💗";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.bottom = "-20px";
+    h.style.animationDuration = (4 + Math.random()*4) + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
